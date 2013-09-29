@@ -1,0 +1,4 @@
+Prime Number Result<br/>
+<%= @input1 %> is <%= @result %>
+
+<%= render :file => 'checkprime.html.erb' %>
