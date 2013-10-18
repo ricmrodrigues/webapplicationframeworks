@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>Welcome <strong><%= @profile.firstname + " " + @profile.lastname %></strong></p>
+
+Your details:
+<p>
+  <b>Address:</b>
+  <%= @profile.address %>
+</p>
+
+<p>
+  <b>Mobile:</b>
+  <%= @profile.mobile %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

@@ -9,7 +9,7 @@
   	var b = document.getElementById('Rotating1');
   	if(Start>=5)
   		Start=0;
-  	b.src = "assets/Books/" + ImageArr1[Start];
+  	b.src = "/assets/Books/" + ImageArr1[Start];
   	window.setTimeout("RotateImages("+whichHolder+","+(Start+1)+")",5000);
   }
   

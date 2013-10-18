@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<title>Golf Store</title>
+	</head>
+	<body>
+		<div id='header'>
+			<!-- Header Image Displayes here -->
+		</div>
+		<div id='menu'>
+			<div id="navbar">
+				<ul>
+					<li>
+						<a href="/items">Products</a>
+					</li>
+					<li>
+						<a href="/about">About</a>
+					</li>
+					<li>
+						<a href="/contact">Contact Us</a>
+					</li>
+					<% if !user_signed_in? %>
+					<li>
+						<%= link_to 'Login', new_user_session_path %>
+					</li>
+					<% else %>
+					<li>
+						<%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+		<div id='container'>
+			<div id='content'>
+
+				<%= yield %>
+
+			</div>
+
+			<p class="notice">
+				<%= notice %>
+			</p>
+			<p class="alert">
+				<%= alert %>
+			</p>
+
+			<div id='first-column'>
+				<div class="box">
+					<h2 class="BoxHeaders">Categories</h2>
+					<%= render '/items/categoryDistinctList' %>
+				</div>
+				<div class="loginbox">
+					<% if user_signed_in? %>
+					<div>
+						Signed in as... <%= current_user.email %> (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete
+%>)
+					</div>
+					<% else %>
+					<%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+					<% end %>
+
+				</div>
+				<div class="searchbox">
+					<h2 class="BoxHeaders">Search Catalog</h2>
+				</div>
+			</div>
+		</div>
+		<div id='footer'>
+			<h6 class="footertext">&copy; Online Golf Store &trade; 2013</h6>
+		</div>
+	</body>
+</html>
+
