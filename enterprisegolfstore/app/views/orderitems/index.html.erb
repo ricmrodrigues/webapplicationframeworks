@@ -1,0 +1,19 @@
+<h3>Order items</h3>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <% total = 0 %>
+  <% @order.orderitems.each do |item| %>
+      <% total += item.quantity * item.price %>
+      <tr>
+        <td><%= link_to item.title, {controller: "items", action: "show", id: item.item_id}, :target => "_blank" %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.price, :unit => "€") %></td>
+      </tr>
+  <% end %>
+
+  <tr><td colspan="4">TOTAL: <%= number_to_currency(total, :unit => "€") %></td></tr>
+</table>
